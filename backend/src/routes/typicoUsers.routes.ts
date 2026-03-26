@@ -4,6 +4,6 @@ import getTypicoUsers from '../controllers/typicoUsers.controllers';
 
 const router = express.Router();
 
-router.get('/testApi', getTypicoUsers)
+router.get('/testUsersMock', getTypicoUsers)
 
 export default router;
