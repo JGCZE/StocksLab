@@ -5,7 +5,7 @@ import { UpdatedUsersSchema, Users } from "../validators";
 
 type TUpdatedUsers = z.infer<typeof UpdatedUsersSchema>;
 
-const resolveTypicoUsers = (data: any) => {
+const resolveTypicoUsers = (data: unknown) => {
   const validUsers = Users.parse(data);
 
   return validUsers.reduce<TUpdatedUsers>((acc, curr) => {
@@ -13,7 +13,7 @@ const resolveTypicoUsers = (data: any) => {
 
     const gender = id < 5 ? EGender.MALE : EGender.FEMALE;
 
-    const hasMoney = id < 3 ? true : false;
+    const hasMoney = id < 3;
 
     const pet = id > 5 ? "dog" : "cat";
 

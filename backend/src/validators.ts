@@ -1,7 +1,7 @@
 import z from "zod";
 import { EGender } from "./enums";
 
-const address = {
+const addressSchema = z.object({
   street: z.string(),
   suite: z.string(),
   city: z.string(),
@@ -10,24 +10,26 @@ const address = {
     lat: z.string(),
     lng: z.string(),
   }),
-};
+});
+
+const companySchema = z.object({
+  name: z.string(),
+  catchPhrase: z.string(),
+  bs: z.string(),
+});
 
 const User = z.object({
   id: z.number(),
   name: z.string(),
   username: z.string(),
   email: z.string().email(),
-  address: z.object(address),
+  address: addressSchema,
   phone: z.string(),
   website: z.string(),
-  company: z.object({
-    name: z.string(),
-    catchPhrase: z.string(),
-    bs: z.string(),
-  }),
+  company: companySchema,
 });
 
-const UpdatedAddressSchema = z.object(address).pick({
+const UpdatedAddressSchema = addressSchema.pick({
   street: true,
   suite: true,
   city: true,
