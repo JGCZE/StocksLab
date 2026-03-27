@@ -5,10 +5,7 @@ const getTypicoUsersApi = async () => {
   const response = await fetch(ENDPOINT)
 
   if (!response.ok) {
-    throw new Error(`
-        route: api/testUsersMock,
-        - Response is not ok!
-      `);
+    throw new Error("route: api/testUsersMock - Response is not ok!");
   }
 
   const data = await response.json()
